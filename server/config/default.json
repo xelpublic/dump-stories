@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "jwtSecret": "fW59qU Strong Secret))",
+  "mongoUri": "mongodb+srv://xelandr:xe22xe22@cluster0.svb1a.mongodb.net/dump-stories?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
+}

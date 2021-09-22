@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.pad-1{
+  padding: 1rem;
+}
+
+.pad-x1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.marg-1{
+  margin: 1rem;
+}
+
+.marg-t2 {
+  margin-top: 2rem;
+}
+
+.marg-t3 {
+  margin-top: 3rem;
+}
+
+.marg-t4 {
+  margin-top: 4rem;
+}
+
+.marg-b2 {
+  margin-bottom: 2rem;
+}
+
+.marg-b4 {
+  margin-bottom: 4rem;
+}
+
+.at-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: baseline;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid gray;
+  border-color: gray transparent gray transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+nav {
+    height: 50px;
+    line-height: 50px;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 50px;
+    line-height: 50px;
+}
+
+nav .button-collapse i {
+    height: 50px;
+    line-height: 50px;
+}
+
+nav .brand-logo { 
+    font-size: 2rem; 
+}
+
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 50px;
+        line-height: 50px;
+    }
+}
+
