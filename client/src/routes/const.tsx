@@ -2,7 +2,7 @@ import { Admin } from "../components/Admin/Admin"
 import { Auth } from "../components/Auth"
 import { Game } from "../components/Game/Game"
 import { GameRules } from "../components/Game/GameRules"
-import { GameList } from "../components/GameList/GameList"
+import GameList from "../components/GameList/GameList"
 
 export enum Paths{
     //user

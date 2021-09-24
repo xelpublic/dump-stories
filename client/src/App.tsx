@@ -1,12 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import { BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Navbar } from './components/Navbar';
 import { AppRouter } from './components/AppRouter';
 import { check } from './http/userAPI';
 import { RootContext } from './context/RootContext';
 
 const App: React.FC = () => {
-
   const { user } = useContext(RootContext)
 
   useEffect(() => {

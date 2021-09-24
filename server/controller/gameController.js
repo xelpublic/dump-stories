@@ -1,29 +1,33 @@
 const ApiError = require('../error/ApiError');
 const { GameData } = require("../model/Game")
-const config = require('config');
-const { ruDateFormatLong } = require('../common/dateFormat');
+const mongoose = require('mongoose');
 
 
 class GameController {
 
     async persist(req, res, next) {
-        const inpGameData = req.body.gameData
-        const userId = req.user.id
-        const plaintData = JSON.parse(inpGameData)
-        const gameData = new GameData(plaintData)
+        try {
+            const inpGameData = req.body.gameData
+            const userId = req.user.id
+            const plaintData = JSON.parse(inpGameData)
+            const gameData = new GameData(plaintData)
 
-        if (plaintData.id) {
-            gameData._id = new mongoose.Types.ObjectId(plaintData.id);
+            if (plaintData.id) {
+                gameData._id = new mongoose.Types.ObjectId(plaintData.id);
+            }
+
+            gameData.userId = userId
+            gameData.date = Date.now()
+
+            gameData.isNew = ! await GameData.exists({ _id: gameData.id })
+
+            await gameData.save()
+
+            res.json(gameData)
         }
-
-        gameData.userId = userId
-        gameData.date = Date.now()
-
-        gameData.isNew = ! await GameData.exists({ _id: gameData.id })
-
-        await gameData.save()
-
-        res.json(gameData)
+        catch (e) {
+            console.log(e.message)
+        }
     }
 
     async getList(req, res, next) {
@@ -35,7 +39,7 @@ class GameController {
         const offset = page * limit - limit
 
         if (pageCount) {
-            let count = 1
+            let count = 0
             const v0 = await GameData.countDocuments({ userId: userId }, (err, docCount) => {
                 if (err) {
                     console.log(err)
@@ -51,7 +55,7 @@ class GameController {
 
         let games = []
 
-        const v1 = await GameData.find({ userId: userId },
+        await GameData.find({ userId: userId },
             'id storyTypeId date gameInProgress playersNames', { skip: offset, limit: limit, sort: { date: -1 } },
             (err, items) => {
                 if (err) {
@@ -78,7 +82,7 @@ class GameController {
     async getById(req, res, next) {
         let gameData
 
-        const game = await GameData.findById(req.params.id
+        await GameData.findById(req.params.id
             , (err, item) => {
                 if (err) {
                     res.status(500).send(err)

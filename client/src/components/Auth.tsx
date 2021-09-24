@@ -16,7 +16,7 @@ export const Auth: React.FC = observer(() => {
 
     const click = async () => {
         try {
-            let data:IUserInfo;
+            let data: IUserInfo;
             if (isLogin) {
                 data = await login(userLogin, password);
             } else {
@@ -35,50 +35,47 @@ export const Auth: React.FC = observer(() => {
     }
 
     return (
-        <div className="row">
-            <div className="col">
-                <div className="card" style={{ width: '30rem' }}>
-                    <h4 className="card-title grey darken-1 white-text pad-1">
-                        {isLogin ? 'Авторизация' : "Регистрация"}
-                    </h4>
+        <div className="container">
+            <div className="card" style={{ width: '30rem' }}>
+                <h4 className="card-title grey darken-1 white-text pad-1">
+                    {isLogin ? 'Авторизация' : "Регистрация"}
+                </h4>
 
-                    <div className="card-content">
+                <div className="card-content">
 
-                        <input type="text"
-                            className="form-control"
-                            id="userLogin"
-                            placeholder="Введите ваш логин..."
-                            value={userLogin}
-                            onChange={e => setUserLogin(e.target.value)} />
+                    <input type="text"
+                        className="form-control"
+                        id="userLogin"
+                        placeholder="Введите ваш логин..."
+                        value={userLogin}
+                        onChange={e => setUserLogin(e.target.value)} />
 
-                        <input type="password"
-                            className="form-control"
-                            id="password"
-                            placeholder="Введите ваш пароль..."
-                            value={password}
-                            onChange={e => setPassword(e.target.value)} />
-                    </div>
+                    <input type="password"
+                        className="form-control"
+                        id="password"
+                        placeholder="Введите ваш пароль..."
+                        value={password}
+                        onChange={e => setPassword(e.target.value)} />
+                </div>
 
-                    <div className="card-action">
-                        {isLogin ?
-                            <div>
-                                Нет аккаунта? <NavLink to={Paths.Registratopn}>Зарегистрируйтесь!</NavLink>
-                            </div>
-                            :
-                            <div>
-                                Есть аккаунт? <NavLink to={Paths.Login}>Войдите!</NavLink>
-                            </div>
-                        }
-                        <div className="right-align">
-                            <button type="button" className="btn" style={{ minWidth: '8rem' }}
-                                onClick={click}>
-                                {isLogin ? 'Войти' : 'Регистрация'}
-                            </button>
+                <div className="card-action">
+                    {isLogin ?
+                        <div>
+                            Нет аккаунта? <NavLink to={Paths.Registratopn}>Зарегистрируйтесь!</NavLink>
                         </div>
+                        :
+                        <div>
+                            Есть аккаунт? <NavLink to={Paths.Login}>Войдите!</NavLink>
+                        </div>
+                    }
+                    <div className="right-align">
+                        <button type="button" className="btn" style={{ minWidth: '8rem' }}
+                            onClick={click}>
+                            {isLogin ? 'Войти' : 'Регистрация'}
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-
     )
 })

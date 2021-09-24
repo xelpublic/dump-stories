@@ -186,15 +186,24 @@ class GameDataStore implements IGameData {
         this.resultStory = resStory;
     }
 
-    persist() {
-        const gameData = JSON.stringify(this, function (key, value) {
-            if (key === '_gamestore') {
-                return undefined;
-            }
-            return value;
-        })
+    toJSON() {
+        return {
+            id: this.id,
+            storyTypeId: this.storyTypeId,
+            date: this.date,
+            gameInProgress: this.gameInProgress,
+            currentPlayerIndex: this.currentPlayerIndex,
+            currentQuestionIndex: this.currentQuestionIndex,
+            playersNames: this.playersNames,
+            answers: this.answers,
+            resultStory: this.resultStory
+        }
+    }
 
-        console.log('persist gameData', gameData);
+    persist() {
+        const gameData = JSON.stringify(this)
+
+        // console.log('persist gameData', gameData);
         persistGame(gameData);
     }
 }

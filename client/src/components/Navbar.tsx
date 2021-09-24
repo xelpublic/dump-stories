@@ -29,6 +29,7 @@ export const Navbar: React.FC = observer(() => {
     }
 
     game.currentGame = undefined;
+    
     history.push(Paths.Game);
   }
 
@@ -46,9 +47,9 @@ export const Navbar: React.FC = observer(() => {
               :
               <></>
           }
-          <li><a href="#!" onClick={() => history.push(Paths.GameRules)}>Правила игры</a></li>
+          <li key="GameRules"><a href="#!" onClick={() => history.push(Paths.GameRules)}>Правила игры</a></li>
 
-          <li>
+          <li key="dropdown1">
             <a className="dropdown-trigger" href="#!" data-target="dropdown1">
               <i className="material-icons">person</i>
               {/* <i className="material-icons right">arrow_drop_down</i> */}
@@ -58,17 +59,17 @@ export const Navbar: React.FC = observer(() => {
               {
                 user.isAuth ?
                   <>
-                    <li><a href="#!" onClick={() => history.push(Paths.GameList)}>Список игр</a></li>
-                    <li><a href="#!" onClick={logOut}>Выйти</a></li>
+                    <li key="GameList"><a href="#!" onClick={() => history.push(Paths.GameList)}>Список игр</a></li>
+                    <li key="logOut"><a href="#!" onClick={logOut}>Выйти</a></li>
                     {
                       user.userRole === 'admin' ?
-                        <li><a href="#!" onClick={() => history.push(Paths.Admin)}>Админка</a></li>
+                        <li key="Admin"><a href="#!" onClick={() => history.push(Paths.Admin)}>Админка</a></li>
                         :
                         <> </>
                     }
                   </>
                   :
-                  <li><a href="#!" onClick={() => history.push(Paths.Login)}>Авторизация</a></li>
+                  <li key="Login"><a href="#!" onClick={() => history.push(Paths.Login)}>Авторизация</a></li>
               }
             </ul>
           </li>

@@ -2,7 +2,7 @@ import { $authHost } from "./index";
 import { IGameInfo } from './../model/game/IGameInfo';
 import { IGameData } from './../model/game/IGameData';
 
-const pageLimit = 2
+const pageLimit = 5
 
 export const persistGame = async (gameData: string) => {
     const { data } = await $authHost.post('/api/game/persist', { gameData })

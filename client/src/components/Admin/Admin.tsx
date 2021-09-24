@@ -3,7 +3,7 @@ export const Admin: React.FC = () => {
         <div>
             <div className="container">
                 <div style={{ width: '35rem' }}>
-                    <h4>Правила игры Чепуха</h4>
+                    <h4>Здесь админка</h4>
                 </div>
             </div>
         </div>
